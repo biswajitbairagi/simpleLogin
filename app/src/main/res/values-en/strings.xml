@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Simple Login Demo</string>
+    <string name="app_name1">Registration Demo</string>
+    <string name="registrohu">Check registration form</string>
+    <string name="rEmri">Full name</string>
+    <string name="rEmail">Email</string>
+    <string name="rFjalekalimi">Demo password</string>
+    <string name="rMobile">Phone number</string>
+    <string name="forget">Forgot password?</string>
+    <string name="hyr">Preview demo</string>
+    <string name="app_name2">Demo Profile</string>
+    <string name="retype">Repeat demo password</string>
+    <string name="profileEmailValue">No email provided</string>
+    <string name="profileEmailLabel">Email:</string>
+    <string name="profileStatusLabel">Status:</string>
+    <string name="profileStatusValue">Demo; not authenticated</string>
+    <string name="demo_notice">Local demo. Use sample details only.</string>
+    <string name="login_demo_notice">Demo preview only; your identity was not verified.</string>
+    <string name="registration_demo_notice">Form is valid. Demo only: no account was created.</string>
+    <string name="error_name_required">Enter your name.</string>
+    <string name="error_email_required">Enter an email address.</string>
+    <string name="error_email_invalid">Enter a valid email address.</string>
+    <string name="error_password_required">Enter a demo password.</string>
+    <string name="error_confirmation_required">Repeat the demo password.</string>
+    <string name="error_password_mismatch">Passwords do not match.</string>
+    <string name="error_phone_required">Enter a phone number.</string>
+</resources>

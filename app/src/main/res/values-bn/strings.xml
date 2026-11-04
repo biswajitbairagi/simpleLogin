@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">লগইন ডেমো</string>
+    <string name="app_name1">রেজিস্ট্রেশন ডেমো</string>
+    <string name="registrohu">রেজিস্ট্রেশন ফর্ম যাচাই করুন</string>
+    <string name="rEmri">পুরো নাম</string>
+    <string name="rEmail">ইমেল</string>
+    <string name="rFjalekalimi">নমুনা পাসওয়ার্ড</string>
+    <string name="rMobile">ফোন নম্বর</string>
+    <string name="forget">পাসওয়ার্ড ভুলে গেছেন?</string>
+    <string name="hyr">ডেমো দেখুন</string>
+    <string name="app_name2">ডেমো প্রোফাইল</string>
+    <string name="retype">নমুনা পাসওয়ার্ড আবার লিখুন</string>
+    <string name="profileEmailValue">ইমেল দেওয়া হয়নি</string>
+    <string name="profileEmailLabel">ইমেল:</string>
+    <string name="profileStatusLabel">অবস্থা:</string>
+    <string name="profileStatusValue">ডেমো; পরিচয় যাচাই হয়নি</string>
+    <string name="demo_notice">স্থানীয় ডেমো। শুধু নমুনা তথ্য ব্যবহার করুন।</string>
+    <string name="login_demo_notice">এটি শুধু ডেমো; আপনার পরিচয় যাচাই করা হয়নি।</string>
+    <string name="registration_demo_notice">ফর্মটি সঠিক। এটি ডেমো; কোনো অ্যাকাউন্ট তৈরি হয়নি।</string>
+    <string name="error_name_required">আপনার নাম লিখুন।</string>
+    <string name="error_email_required">ইমেল ঠিকানা লিখুন।</string>
+    <string name="error_email_invalid">সঠিক ইমেল ঠিকানা লিখুন।</string>
+    <string name="error_password_required">একটি নমুনা পাসওয়ার্ড লিখুন।</string>
+    <string name="error_confirmation_required">নমুনা পাসওয়ার্ড আবার লিখুন।</string>
+    <string name="error_password_mismatch">পাসওয়ার্ড দুটি মিলছে না।</string>
+    <string name="error_phone_required">ফোন নম্বর লিখুন।</string>
+</resources>
