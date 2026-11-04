@@ -8,73 +8,61 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/** A local form demonstration; this activity does not authenticate users. */
 public class LoginActivity extends AppCompatActivity {
-
-    public EditText email;
-    public EditText password;
-    public Button login;
-    public Button register;
-    public String inEmail;
-    public String inPassword;
+    private EditText email;
+    private EditText password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login();
-        register();
-    }
-
-    public void init(){
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
-        login = (Button) findViewById(R.id.hyr);
-        register = (Button) findViewById(R.id.regjistrohu);
-    }
+        Button login = (Button) findViewById(R.id.hyr);
+        Button register = (Button) findViewById(R.id.regjistrohu);
 
-    public void checkLogin(){
-        inEmail = email.getText().toString();
-        inPassword = password.getText().toString();
-        String message;
-        if(inEmail.isEmpty() && inPassword.isEmpty()){
-            message = "Fushat nuk mund te jene bosh!";
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-        }
-        else if(!(inEmail.isEmpty()) && inPassword.isEmpty()){
-            message = "Fjalekalimi nuk mund te jete bosh!";
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-        }
-        else if(inEmail.isEmpty() && !(inPassword.isEmpty())){
-            message = "E-mail nuk mund te jete bosh!";
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-        }
-        else{
-            message = "Ju futet: "+inEmail+" dhe: "+inPassword;
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(),ProfileActivity.class);
-            Bundle b = new Bundle();
-            b.putString("email",inEmail);
-            b.putString("password",inPassword);
-            i.putExtras(b);
-            startActivity(i);
-        }
-    }
-
-    public void login(){
-        init();
-        login.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 checkLogin();
             }
         });
-
-    }
-
-    public void register(){
-        register.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+    }
+
+    private void checkLogin() {
+        email.setError(null);
+        password.setError(null);
+        String enteredEmail = email.getText().toString();
+        FormValidator.Error error = FormValidator.validateLogin(
+                enteredEmail, password.getText().toString());
+        if (error == FormValidator.Error.EMAIL_REQUIRED) {
+            email.setError(getString(R.string.error_email_required));
+            email.requestFocus();
+            return;
+        }
+        if (error == FormValidator.Error.EMAIL_INVALID) {
+            email.setError(getString(R.string.error_email_invalid));
+            email.requestFocus();
+            return;
+        }
+        if (error == FormValidator.Error.PASSWORD_REQUIRED) {
+            password.setError(getString(R.string.error_password_required));
+            password.requestFocus();
+            return;
+        }
+
+        // Never display the password or include it in an Intent or saved state.
+        password.setText("");
+        Toast.makeText(this, R.string.login_demo_notice, Toast.LENGTH_LONG).show();
+        Intent preview = new Intent(this, ProfileActivity.class);
+        preview.putExtra(ProfileActivity.EXTRA_EMAIL, enteredEmail.trim());
+        startActivity(preview);
     }
 }

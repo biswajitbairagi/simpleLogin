@@ -1,17 +1,27 @@
 <resources>
     <string name="app_name">HYR NE SISTEM</string>
     <string name="app_name1">REGJISTROHU</string>
-    <string name="registrohu">regjistrohu</string>
+    <string name="registrohu">Kontrollo formularin</string>
     <string name="rEmri">Emri i plote</string>
     <string name="rEmail">E-mail</string>
     <string name="rFjalekalimi">Fjalekalimi</string>
     <string name="rMobile">Telefon +355/</string>
     <string name="forget">Keni harruar fjalekalimin?</string>
-    <string name="hyr">Hyr ne sistem</string>
+    <string name="hyr">Shiko demonstrimin</string>
     <string name="app_name2">Profili</string>
     <string name="retype">Rishkruaj fjalekalimin</string>
-    <string name="profileEmailValue">HI!</string>
-    <string name="profilePasswordValue">Hi!</string>
+    <string name="profileEmailValue">E-mail nuk u dha</string>
     <string name="profileEmailLabel">E-mail:</string>
-    <string name="profilePasswordLabel">Password:</string>
+    <string name="profileStatusLabel">Gjendja:</string>
+    <string name="profileStatusValue">Demo; pa autentikim</string>
+    <string name="demo_notice">Demo lokale. Perdorni vetem te dhena prove.</string>
+    <string name="login_demo_notice">Vetem demonstrim; identiteti nuk u verifikua.</string>
+    <string name="registration_demo_notice">Formulari eshte i vlefshem. Demo: llogaria nuk u krijua.</string>
+    <string name="error_name_required">Shkruani emrin.</string>
+    <string name="error_email_required">Shkruani e-mail.</string>
+    <string name="error_email_invalid">Shkruani nje adrese e-mail te vlefshme.</string>
+    <string name="error_password_required">Shkruani nje fjalekalim prove.</string>
+    <string name="error_confirmation_required">Perseritni fjalekalimin.</string>
+    <string name="error_password_mismatch">Fjalekalimet nuk jane njesoj.</string>
+    <string name="error_phone_required">Shkruani numrin e telefonit.</string>
 </resources>

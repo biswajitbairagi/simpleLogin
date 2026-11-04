@@ -7,99 +7,78 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+/** Checks demo form input without creating an account or storing credentials. */
 public class RegisterActivity extends AppCompatActivity {
+    private EditText fullName;
+    private EditText email;
+    private EditText password;
+    private EditText retype;
+    private EditText phone;
 
-    public EditText fullName;
-    public String inFullName;
-    public EditText email;
-    public String inEmail;
-    public EditText password;
-    public String inPassword;
-    public EditText retype;
-    public String inRetype;
-    public EditText phone;
-    public String inPhone;
-    public Button register;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        checkPassword();
-        register();
-    }
-
-    public void init(){
         fullName = (EditText) findViewById(R.id.rFullName);
         email = (EditText) findViewById(R.id.rEmail);
         password = (EditText) findViewById(R.id.rPassword);
         retype = (EditText) findViewById(R.id.rRetypePassword);
         phone = (EditText) findViewById(R.id.rMobile);
-        register = (Button) findViewById(R.id.rRegister);
-    }
-
-    public void register(){
-        init();
-        register.setOnClickListener(new View.OnClickListener(){
+        Button register = (Button) findViewById(R.id.rRegister);
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View view) {
                 checkRegister();
             }
         });
     }
 
-    public void checkPassword(){
-        init();
-        register.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                inPassword = password.getText().toString();
-                inRetype = retype.getText().toString();
-                if(inPassword.isEmpty() || inRetype.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Fjalekalimet jane bosh",Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                else if(inPassword.equals(inRetype)) {
-                    Toast.makeText(getApplicationContext(),"Fjalekalimet jane njesoj",Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Fjalekalimet nuk jane njesoj",Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            }
-        });
+    private void checkRegister() {
+        fullName.setError(null);
+        email.setError(null);
+        password.setError(null);
+        retype.setError(null);
+        phone.setError(null);
+
+        FormValidator.Error error = FormValidator.validateRegistration(
+                fullName.getText().toString(), email.getText().toString(),
+                password.getText().toString(), retype.getText().toString(),
+                phone.getText().toString());
+        switch (error) {
+            case NAME_REQUIRED:
+                showError(fullName, R.string.error_name_required);
+                return;
+            case EMAIL_REQUIRED:
+                showError(email, R.string.error_email_required);
+                return;
+            case EMAIL_INVALID:
+                showError(email, R.string.error_email_invalid);
+                return;
+            case PASSWORD_REQUIRED:
+                showError(password, R.string.error_password_required);
+                return;
+            case CONFIRMATION_REQUIRED:
+                showError(retype, R.string.error_confirmation_required);
+                return;
+            case PASSWORD_MISMATCH:
+                showError(retype, R.string.error_password_mismatch);
+                return;
+            case PHONE_REQUIRED:
+                showError(phone, R.string.error_phone_required);
+                return;
+            case NONE:
+                password.setText("");
+                retype.setText("");
+                Toast.makeText(this, R.string.registration_demo_notice,
+                        Toast.LENGTH_LONG).show();
+                return;
+            default:
+                throw new IllegalStateException("Unhandled validation result");
+        }
     }
 
-    public void checkRegister(){
-        inFullName = fullName.getText().toString();
-        inEmail = email.getText().toString();
-        inPassword = password.getText().toString();
-        inRetype = retype.getText().toString();
-        inPhone = phone.getText().toString();
-        String message = " ";
-        if(inFullName.isEmpty()){
-            message+="Emri ";
-        }
-        if(inEmail.isEmpty()){
-            message+="Email ";
-        }
-        if(inPassword.isEmpty()){
-            message+="Fjalekalimi ";
-        }
-        if(inRetype.isEmpty()){
-            message+="Fjalekalimi ";
-        }
-        if(inPhone.isEmpty()){
-            message+="Numri ";
-        }
-        message+="nuk mund te jete bosh";
-        if(message.equals(" nuk mund te jete bosh")){
-            message = "Regjistrimi u krye me sukses!";
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-        }
+    private void showError(EditText field, int message) {
+        field.setError(getString(message));
+        field.requestFocus();
     }
 }

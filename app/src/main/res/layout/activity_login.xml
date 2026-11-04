@@ -45,6 +45,7 @@
 
                 <EditText
                     android:id="@+id/password"
+                    android:saveEnabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:textSize="16sp"
@@ -58,9 +59,9 @@
                 <TextView
                     android:id="@+id/forgot"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:text="@string/forget"
+                    android:text="@string/demo_notice"
                     android:textAlignment="textEnd"
                     android:textColor="@color/red"
                     tools:ignore="SmallSp" />

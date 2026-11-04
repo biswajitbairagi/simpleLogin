@@ -49,6 +49,7 @@
 
             <EditText
                 android:id="@+id/rPassword"
+                android:saveEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:textSize="16sp"
@@ -61,6 +62,7 @@
 
             <EditText
                 android:id="@+id/rRetypePassword"
+                android:saveEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:textSize="16sp"
